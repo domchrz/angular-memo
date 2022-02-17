@@ -17,4 +17,13 @@ app-card {
   width: 150px;
   transform-style: preserve-3d;
   cursor: pointer;
+  transition: box-shadow .7s;
+}
+
+.disable {
+  pointer-events: none;
+}
+
+.matched {
+  box-shadow: 0 0 15px gold;
 }

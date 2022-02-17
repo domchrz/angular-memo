@@ -1,7 +1,16 @@
 <section>
+  <p>{{score}}</p>
+  <p>{{'Moves made: ' + movesMade}}</p>
   <div class="grid">
     <ng-container *ngFor="let card of cards">
-      <app-card (click)="flip(card)" [@flip]="card.isFlipped ? 'faced-up' : 'faced-down'" [card]="card"></app-card>
+      <app-card
+        (click)="flip(card)"
+        [@flip]="card.isFlipped ? 'faced-up' : 'faced-down'"
+        (@flip.start)="hasLoaded ? flipStart() : false"
+        (@flip.done)="flipEnd()"
+        [ngClass]="{ 'disable': flippedCards.length === 2, 'matched': card.isMatched }"
+        [card]="card"
+      ></app-card>
     </ng-container>
   </div>
 </section>
